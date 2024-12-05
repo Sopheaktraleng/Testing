@@ -9,7 +9,10 @@ const fetchUsers = async () => {
 };
 
 function UserList() {
-    const { data, isLoading, error } = useQuery(["users"], fetchUsers);
+    const { data, isLoading, error } = useQuery({
+        queryKey: ["users"],
+        queryFn: fetchUsers,
+    });
 
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
