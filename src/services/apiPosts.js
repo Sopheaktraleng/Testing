@@ -3,7 +3,7 @@ import supabase from "./supabase";
 export const getPosts = async () => {
     const { data, error } = await supabase
         .from("posts")
-        .select("*,user:UserList(username,email)");
+        .select("*,user:users(username,email)");
     if (error) throw new Error(error.message);
     return data;
 };
